@@ -3,6 +3,15 @@
 Este es un proyecto de demostración de una API RestFul que maneja facturas, es desarrollado en Java utilizando Spring Boot, Thymeleaf, JPA y bootstrap.
 
 ------------------------------------------------------
+## DESCRIPCIÓN DEL PROYECTO ##
+
+
+El proyecto tiene los siguientes paquetes "config", "controllers", "dto", "models", "services", con el fin de que cada paquete pueda interactuar con su debida capa cercana, haciendo que cada capa tenga solo cierta responsabilidad, haciendo que tenga funcionamiento de microservicio.
+
+Se desarrolla el proyecto con el framework de spring boot con el fin de desarrollar la api restful y la vista para mostrar los datos de las facturas,
+para ello se requirio dos tipos de controladores, uno es RestController para que funcione la api y el otro tipo es Controller que permite cargar un archivo html, este tipo de cargas sirve por la instalación de Thymeleaf que es un motor de plantillas. También se usa JPA para interacturar con el motor de base de datos. 
+
+------------------------------------------------------l
 ## TECNOLOGÍAS UTILIZADAS ##
 
 Java
@@ -99,23 +108,8 @@ COLLATE = utf8_bin;
 }
 3. Es una petición get, "http://localhost:8080", sirve para ver desde un navegador, en una tabla los datos más relevantes de cada factura.
 ------------------------------------------------------
+## EJECUTARLO ##
 
-### Iniciar la aplicación 
-Asegurarse de tener
-Java 11 + 
-
-### Agregar la configuración de la base en applicacitons.properties 
-This step is necessary
-
-/src/main/resources/application.properties
-
-Actualiza las siguientes propiedades 
-
-* url 
-* username 
-* password
-
-#### Ejecutalo
 usar mvn para ejecutar
 
 Windows example:
