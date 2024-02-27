@@ -10,6 +10,8 @@ public class FacturaConProductosDTO {
 	private FacturaM factura;
     private List<FacturaProductoM> productos;
     private List<ProductoM> detalles;
+    private List<String> nombresProductos;
+    private String nombreCliente;
 
     public FacturaConProductosDTO() {
     }
@@ -19,6 +21,14 @@ public class FacturaConProductosDTO {
         this.productos = productos;
     }
 
+    public FacturaConProductosDTO(FacturaM factura, List<FacturaProductoM> productos, List<String> nombresProductos,String nombreCliente) {
+        this.factura = factura;
+        this.productos = productos;
+        this.nombresProductos = nombresProductos;
+        this.nombreCliente =  nombreCliente;
+    }
+
+    
     public FacturaM getFactura() {
         return factura;
     }
@@ -42,5 +52,20 @@ public class FacturaConProductosDTO {
     public void setDetalles(List<ProductoM> detalles) {
         this.detalles = detalles;
     }
-	
+
+    public List<String> getNombresProductos() {
+        return nombresProductos;
+    }
+
+    public void setNombresProductos(List<String> nombresProductos) {
+        this.nombresProductos = nombresProductos;
+    }
+
+    public String getNombreCliente() {
+        return nombreCliente;
+    }
+
+    public void setNombreCliente(String nombreCliente) {
+        this.nombreCliente = nombreCliente;
+    }
 }

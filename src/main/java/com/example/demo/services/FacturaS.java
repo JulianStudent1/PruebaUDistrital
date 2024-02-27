@@ -22,6 +22,9 @@ public class FacturaS {
     @Autowired
     private ProductoR productoR;
     
+    @Autowired
+    private ClientesR clienteR;
+    
     public ArrayList<FacturaM> obtenerFacturas(){
         return (ArrayList<FacturaM>) facturaR.findAll();
     }
@@ -59,18 +62,23 @@ public class FacturaS {
     public List<FacturaConProductosDTO> obtenerFacturasConDetallesDos() {
         List<FacturaM> facturas = (List<FacturaM>) facturaR.findAll();
         List<FacturaConProductosDTO> facturasConDetalles = new ArrayList<>();
-
+        
+        
         for (FacturaM factura : facturas) {
+        	ClientesM clienteO = clienteR.findByidCliente(factura.getIdCliente());
             List<FacturaProductoM> detalles = facturaProductoR.findByidFactura(factura.getIdFactura());
             List<ProductoM> productos = new ArrayList<>(); 
+            List<String> nombresProductos = new ArrayList<>(); 
             
             for (FacturaProductoM detalle : detalles) {
+            	
             	ProductoM producto = productoR.findByidProducto(detalle.getIdProducto());
+            	nombresProductos.add(producto.getNombreProducto());
                 System.out.println(producto.getNombreProducto());
             }
             
             
-            facturasConDetalles.add(new FacturaConProductosDTO(factura, detalles));
+            facturasConDetalles.add(new FacturaConProductosDTO(factura, detalles, nombresProductos, clienteO.getNombre().toString()));
         }
 
         return facturasConDetalles;

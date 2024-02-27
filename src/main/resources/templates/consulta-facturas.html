@@ -15,25 +15,31 @@
 		        <tr>
 		            <th>Id Factura</th>
 		            <th>Id Cliente</th>
-		            <th>Total</th>
 		            <th>Fecha</th>
-		            <th>Detalles</th>
+		            <th>Nombre producto</th>
+		            <th>Cantidad</th>
+		            <th>Total</th>
 		        </tr>
 		        </thead>
 		        <tbody>
-		        <!-- Iterar sobre las facturas con sus detalles -->
 		        <tr th:each="factura : ${facturasConDetalles}">
 		            <td th:text="${factura.factura.idFactura}"></td>
-		            <td th:text="${factura.factura.idCliente}"></td>
-		            <td th:text="${factura.factura.total}"></td>
+		            <td th:text="${factura.nombreCliente}"></td>
+		            
 		            <td th:text="${factura.factura.date}"></td>
 		            <td>
-		                <!-- Iterar sobre los detalles de la factura -->
-		                <ul>
-						    <li th:each="detalle : ${factura.productos}"
-						        th:text="${detalle.idProducto} + ' - ' + ${detalle.cantidadProductos}"></li>
+		            	<ul>
+		                	<li th:each="nombreProducto : ${factura.nombresProductos}" th:text="${nombreProducto}"></li>
 						</ul>
+		           	</td>
+		            <td>
+		            	<ul>
+		                	<li th:each="detalle : ${factura.productos}"
+						        th:text="${detalle.cantidadProductos}"></li>
+						</ul>
+						
 		            </td>
+		            <td th:text="${factura.factura.total}"></td>
 		        </tr>
 		        </tbody>
 		    </table>
