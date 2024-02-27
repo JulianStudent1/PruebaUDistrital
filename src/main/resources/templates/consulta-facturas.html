@@ -7,12 +7,37 @@
         <link rel="stylesheet" href="/static/bootstrap-5.3.0-dist/css/bootstrap.min.css">
     </head>
     <body>
-    
-
-      
-      <h1>Consulta de Facturas</h1>
-      
-     
+     	<div class="container">
+		    <h1>Consulta de Facturas</h1>
+		
+		    <table class="table">
+		        <thead>
+		        <tr>
+		            <th>Id Factura</th>
+		            <th>Id Cliente</th>
+		            <th>Total</th>
+		            <th>Fecha</th>
+		            <th>Detalles</th>
+		        </tr>
+		        </thead>
+		        <tbody>
+		        <!-- Iterar sobre las facturas con sus detalles -->
+		        <tr th:each="factura : ${facturasConDetalles}">
+		            <td th:text="${factura.factura.idFactura}"></td>
+		            <td th:text="${factura.factura.idCliente}"></td>
+		            <td th:text="${factura.factura.total}"></td>
+		            <td th:text="${factura.factura.date}"></td>
+		            <td>
+		                <!-- Iterar sobre los detalles de la factura -->
+		                <ul>
+						    <li th:each="detalle : ${factura.productos}"
+						        th:text="${detalle.idProducto} + ' - ' + ${detalle.cantidadProductos}"></li>
+						</ul>
+		            </td>
+		        </tr>
+		        </tbody>
+		    </table>
+		</div>
 
 	    <script src="/static/bootstrap-5.3.0-dist/js/bootstrap.min.js"></script>
 	</body>

@@ -11,5 +11,7 @@ import org.springframework.stereotype.Repository;
 public interface FacturaProductoR extends CrudRepository<FacturaProductoM, Long> {
 
 	public abstract ArrayList<FacturaProductoM> findByidDetalleFactura(Long idDetalleFactura);
+	
+	public abstract ArrayList<FacturaProductoM> findByidFactura(Long idFactura);
 
 }
